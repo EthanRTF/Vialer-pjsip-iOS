@@ -1,4 +1,4 @@
-/* $Id: pjsua_internal.h 5676 2017-10-24 07:31:39Z ming $ */
+/* $Id: pjsua_internal.h 5788 2018-05-09 06:58:48Z ming $ */
 /* 
  * Copyright (C) 2008-2011 Teluu Inc. (http://www.teluu.com)
  * Copyright (C) 2003-2008 Benny Prijono <benny@prijono.org>
@@ -83,6 +83,7 @@ struct pjsua_call_media
     pj_bool_t		 tp_auto_del; /**< May delete media transport       */
     pjsua_med_tp_st	 tp_st;     /**< Media transport state		    */
     pj_bool_t            use_custom_med_tp;/**< Use custom media transport? */
+    pj_bool_t		 enable_rtcp_mux;/**< Enable RTP& RTCP multiplexing?*/
     pj_sockaddr		 rtp_addr;  /**< Current RTP source address
 					    (used to update ICE default
 					    address)			    */
@@ -138,6 +139,8 @@ struct pjsua_call
     pjsua_call_hold_type call_hold_type; /**< How to do call hold.	    */
     pj_bool_t		 local_hold;/**< Flag for call-hold by local.	    */
     void		*hold_msg;  /**< Outgoing hold tx_data.		    */
+    pj_str_t		 cname;	    /**< RTCP CNAME.			    */
+    char		 cname_buf[16];/**< cname buffer.		    */
 
     unsigned		 med_cnt;   /**< Number of media in SDP.	    */
     pjsua_call_media     media[PJSUA_MAX_CALL_MEDIA]; /**< Array of media   */

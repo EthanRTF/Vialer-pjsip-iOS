@@ -1,4 +1,4 @@
-/* $Id: siptypes.hpp 4968 2014-12-18 04:40:35Z riza $ */
+/* $Id: siptypes.hpp 5807 2018-06-20 07:56:45Z nanang $ */
 /*
  * Copyright (C) 2032 Teluu Inc. (http://www.teluu.com)
  *
@@ -404,6 +404,11 @@ struct TransportInfo
     unsigned		    usageCount;
 
 public:
+    /**
+     * Default constructor.
+     */
+    TransportInfo();
+
     /** Construct from pjsua_transport_info */
     void fromPj(const pjsua_transport_info &info);
 };
@@ -543,6 +548,8 @@ struct TsxStateEventSrc
     TimerEntry      timer;          /**< The timer.                 */
     pj_status_t     status;         /**< Transport error status.    */
     GenericData     data;           /**< Generic data.              */
+
+    TsxStateEventSrc() : status() {}
 };
 
 /**
@@ -560,6 +567,8 @@ struct TsxStateEvent
                                          *     - PJSIP_EVENT_TIMER
                                          *     - PJSIP_EVENT_USER
                                          */
+
+    TsxStateEvent();
 };
 
 /**
